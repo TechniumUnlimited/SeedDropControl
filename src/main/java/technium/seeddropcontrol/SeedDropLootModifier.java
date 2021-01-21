@@ -30,7 +30,6 @@ public class SeedDropLootModifier extends LootModifier {
                     double randomValue = Math.random();
                     double chance = ChanceConfig.grass_wheat_chance.get();
                     if (randomValue < chance / 100) {
-                        SeedDropControl.LOGGER.info(randomValue);
                         generatedLoot.remove(0);
                     }
                 }
@@ -39,7 +38,6 @@ public class SeedDropLootModifier extends LootModifier {
                 double randomValue = Math.random();
                 double chance = ChanceConfig.grass_mod_seed_chance.get();
                 if (randomValue < chance / 100) {
-                    SeedDropControl.LOGGER.info(randomValue);
                     generatedLoot.remove(0);
                 }
             }
