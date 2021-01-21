@@ -1,0 +1,9 @@
+{
+  "type": "seeddropcontrol:global_tall_grass_modifier",
+  "conditions": [
+    {
+      "condition": "block_state_property",
+      "block": "minecraft:tall_grass"
+    }
+  ]
+}

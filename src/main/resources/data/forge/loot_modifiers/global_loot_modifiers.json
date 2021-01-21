@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "entries": [
+    "seeddropcontrol:global_grass_modifier",
+    "seeddropcontrol:global_tall_grass_modifier"
+  ]
+}
