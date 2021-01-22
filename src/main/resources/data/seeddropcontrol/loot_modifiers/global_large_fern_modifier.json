@@ -1,0 +1,9 @@
+{
+  "type": "seeddropcontrol:global_large_fern_modifier",
+  "conditions": [
+    {
+      "condition": "block_state_property",
+      "block": "minecraft:large_fern"
+    }
+  ]
+}
