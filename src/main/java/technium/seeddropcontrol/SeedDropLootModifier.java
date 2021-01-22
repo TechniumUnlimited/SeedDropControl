@@ -8,6 +8,7 @@ import net.minecraft.loot.conditions.ILootCondition;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.common.loot.LootModifier;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.Nonnull;
 import java.util.List;
@@ -35,6 +36,14 @@ public class SeedDropLootModifier extends LootModifier {
                 }
             }
             else {
+                if (generatedLoot.get(0).getItem() == ForgeRegistries.ITEMS.getValue(new ResourceLocation("planttech2", "guide"))) {
+                    if (ChanceConfig.planttech2_guidebook_drop.get()) {
+                        return generatedLoot;
+                    }
+                    else {
+                        generatedLoot.remove(0);
+                    }
+                }
                 double randomValue = Math.random();
                 double chance = ChanceConfig.grass_mod_seed_chance.get();
                 if (randomValue < chance / 100) {
