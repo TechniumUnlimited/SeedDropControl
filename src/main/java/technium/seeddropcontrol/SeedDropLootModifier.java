@@ -11,6 +11,7 @@ import net.minecraftforge.common.loot.LootModifier;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.Nonnull;
+import java.util.ArrayList;
 import java.util.List;
 
 public class SeedDropLootModifier extends LootModifier {
@@ -22,34 +23,36 @@ public class SeedDropLootModifier extends LootModifier {
     @Nonnull
     @Override
     public List<ItemStack> doApply(List<ItemStack> generatedLoot, LootContext context) {
-        if (generatedLoot.size() > 0) {
-            if (generatedLoot.get(0).getItem() == Items.WHEAT_SEEDS) {
-                if (ChanceConfig.grass_wheat_chance.get() == 100) {
-                    return generatedLoot;
-                }
-                if (ChanceConfig.grass_wheat_chance.get() < 100) {
-                    double randomValue = Math.random();
-                    double chance = ChanceConfig.grass_wheat_chance.get();
-                    if (randomValue < chance / 100) {
-                        generatedLoot.remove(0);
+        if (!generatedLoot.isEmpty()) {
+            List<ItemStack> finalLootList = new ArrayList<>();
+            for (ItemStack itemStack : generatedLoot) {
+                if (itemStack.getItem() == Items.WHEAT_SEEDS) {
+                    if (ChanceConfig.grass_wheat_chance.get() >= 100)
+                        finalLootList.add(itemStack);
+                    else {
+                        double randomValue = Math.random();
+                        double chance = ChanceConfig.grass_wheat_chance.get();
+                        if (randomValue > chance / 100) {
+                            finalLootList.add(itemStack);
+                        }
                     }
                 }
-            }
-            else {
-                if (generatedLoot.get(0).getItem() == ForgeRegistries.ITEMS.getValue(new ResourceLocation("planttech2", "guide"))) {
-                    if (ChanceConfig.planttech2_guidebook_drop.get()) {
-                        return generatedLoot;
+                else {
+                    if (itemStack.getItem() == ForgeRegistries.ITEMS.getValue(new ResourceLocation("planttech2", "guide"))) {
+                        if (ChanceConfig.planttech2_guidebook_drop.get()) {
+                            finalLootList.add(itemStack);
+                        }
                     }
                     else {
-                        generatedLoot.remove(0);
+                        double randomValue = Math.random();
+                        double chance = ChanceConfig.grass_mod_seed_chance.get();
+                        if (randomValue > chance / 100) {
+                            finalLootList.add(itemStack);
+                        }
                     }
                 }
-                double randomValue = Math.random();
-                double chance = ChanceConfig.grass_mod_seed_chance.get();
-                if (randomValue < chance / 100) {
-                    generatedLoot.remove(0);
-                }
             }
+            return finalLootList;
         }
         return generatedLoot;
     }
