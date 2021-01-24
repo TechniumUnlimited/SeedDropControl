@@ -12,12 +12,16 @@ public class Config {
     public static final ForgeConfigSpec CONFIG;
 
     static {
-        BUILDER.push("Chance of Wheat Seed Drops Modifier");
-        ChanceConfig.init(BUILDER);
+        BUILDER.push("Vanilla Seed Options");
+        ChanceConfig.vanilla(BUILDER);
         BUILDER.pop();
 
-        BUILDER.push("Chance of Mod Seed Drops Modifier");
-        ChanceConfig.init(BUILDER);
+        BUILDER.push("Mod Compat Options");
+        ChanceConfig.modcompat(BUILDER);
+        BUILDER.pop();
+
+        BUILDER.push("Debugging Options");
+        ChanceConfig.debug(BUILDER);
         BUILDER.pop();
 
         CONFIG = BUILDER.build();

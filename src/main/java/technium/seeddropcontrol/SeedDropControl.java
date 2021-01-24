@@ -45,8 +45,4 @@ public class SeedDropControl {
         LOGGER.info("Is nether allowed?:");
     }
 
-    public static double convertChanceRate() {
-        return 0;
-    }
-
 }
