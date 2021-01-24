@@ -17,7 +17,7 @@ public class ChanceConfig {
         planttech2_guidebook_drop = config.comment("Mod Compat - Planttech2: Allow Planttech2's guidebook to drop?").define("True/False", true);
     }
     public static void debug(ForgeConfigSpec.Builder config) {
-        debug_enabled = config.comment("Should debug messages be printed to the logs/server console?").define("True/False", true);
+        debug_enabled = config.comment("Should debug messages be printed to the logs/server console?").define("True/False", false);
     }
 
 }
