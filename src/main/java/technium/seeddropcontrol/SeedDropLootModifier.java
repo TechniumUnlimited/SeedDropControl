@@ -33,9 +33,9 @@ public class SeedDropLootModifier extends LootModifier {
                     else {
                         double randomValue = Math.random();
                         double chance = ChanceConfig.grass_wheat_chance.get();
-                        if (randomValue > chance / 100) {
+                        if (randomValue < chance / 100) {
                             if (debugEnabled) {
-                                SeedDropControl.LOGGER.info("randomValue was > than " + chance + "/100, generating loot");
+                                SeedDropControl.LOGGER.info("randomValue was < than " + chance + "/100, generating loot");
                                 SeedDropControl.LOGGER.info("Added loot: " + itemStack.toString());
                             }
                             finalLootList.add(itemStack);
@@ -61,9 +61,9 @@ public class SeedDropLootModifier extends LootModifier {
                     else {
                         double randomValue = Math.random();
                         double chance = ChanceConfig.grass_mod_seed_chance.get();
-                        if (randomValue > chance / 100) {
+                        if (randomValue < chance / 100) {
                             if (debugEnabled) {
-                                SeedDropControl.LOGGER.info("randomValue was > than " + chance + "/100, generating loot");
+                                SeedDropControl.LOGGER.info("randomValue was < than " + chance + "/100, generating loot");
                                 SeedDropControl.LOGGER.info("Added loot: " + itemStack.toString());
                             }
                             finalLootList.add(itemStack);
