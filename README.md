@@ -7,3 +7,5 @@ Well this mod is for you. You can reduce the drops from grass and tall grass by 
  
 
 The Config file is simple, just edit the seeddropcontrol.toml and set the % out of default seed rates you want to drop, for wheat seeds and modded seeds, and launch game/server.
+
+Mod is now live and available on CurseForge here: https://www.curseforge.com/minecraft/mc-mods/seed-drop-control
