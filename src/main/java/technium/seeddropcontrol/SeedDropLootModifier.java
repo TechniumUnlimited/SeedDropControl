@@ -40,12 +40,22 @@ public class SeedDropLootModifier extends LootModifier {
                             }
                             finalLootList.add(itemStack);
                         }
+                        else {
+                            if (debugEnabled) {
+                                SeedDropControl.LOGGER.info("randomValue was < than " + chance + "/100, removing " + itemStack.toString() + " from loot.");
+                            }
+                        }
                     }
                 }
                 else {
                     if (itemStack.getItem() == ForgeRegistries.ITEMS.getValue(new ResourceLocation("planttech2", "guide"))) {
                         if (ChanceConfig.planttech2_guidebook_drop.get()) {
                             finalLootList.add(itemStack);
+                        }
+                        else {
+                            if (debugEnabled) {
+                                SeedDropControl.LOGGER.info("Planttech2 guidebook is disabled, removing " + itemStack.toString() + " from loot.");
+                            }
                         }
                     }
                     else {
@@ -57,6 +67,11 @@ public class SeedDropLootModifier extends LootModifier {
                                 SeedDropControl.LOGGER.info("Added loot: " + itemStack.toString());
                             }
                             finalLootList.add(itemStack);
+                        }
+                        else {
+                            if (debugEnabled) {
+                                SeedDropControl.LOGGER.info("randomValue was < than " + chance + "/100, removing " + itemStack.toString() + " from loot.");
+                            }
                         }
                     }
                 }
@@ -78,8 +93,7 @@ public class SeedDropLootModifier extends LootModifier {
 
         @Override
         public JsonObject write(SeedDropLootModifier instance) {
-            JsonObject json = makeConditions(instance.conditions);
-            return json;
+            return makeConditions(instance.conditions);
         }
     }
 }
