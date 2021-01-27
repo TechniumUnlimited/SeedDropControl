@@ -32,21 +32,14 @@ public class SeedDropControl {
     }
 
     private static final DeferredRegister<GlobalLootModifierSerializer<?>> GLM = DeferredRegister.create(ForgeRegistries.LOOT_MODIFIER_SERIALIZERS, MOD_ID);
-
     private static final RegistryObject<SeedDropLootModifier.Serializer> GRASSMODIFIER = GLM.register("global_grass_modifier", SeedDropLootModifier.Serializer::new);
     private static final RegistryObject<SeedDropLootModifier.Serializer> TALLGRASSMODIFIER = GLM.register("global_tall_grass_modifier", SeedDropLootModifier.Serializer::new);
     private static final RegistryObject<SeedDropLootModifier.Serializer> FERNMODIFIER = GLM.register("global_fern_modifier", SeedDropLootModifier.Serializer::new);
     private static final RegistryObject<SeedDropLootModifier.Serializer> LARGEFERNMODIFIER = GLM.register("global_large_fern_modifier", SeedDropLootModifier.Serializer::new);
 
-
     @Nonnull
     public static ResourceLocation getId(String path) {
         return new ResourceLocation(MOD_ID, path);
-    }
-
-    @SubscribeEvent
-    public void onServerStarting(FMLServerStartingEvent event) {
-        LOGGER.info("Is nether allowed?:");
     }
 
 }
