@@ -42,7 +42,7 @@ public class SeedDropLootModifier extends LootModifier {
                         }
                         else {
                             if (debugEnabled) {
-                                SeedDropControl.LOGGER.info("randomValue was < than " + chance + "/100, removing " + itemStack.toString() + " from loot.");
+                                SeedDropControl.LOGGER.info("randomValue was < than " + chance + "/100, removing loot: " + itemStack.toString() + " from loot.");
                             }
                         }
                     }
@@ -51,10 +51,13 @@ public class SeedDropLootModifier extends LootModifier {
                     if (itemStack.getItem() == ForgeRegistries.ITEMS.getValue(new ResourceLocation("planttech2", "guide"))) {
                         if (Config.planttech2_guidebook_drop.get()) {
                             finalLootList.add(itemStack);
+                            if (debugEnabled) {
+                                SeedDropControl.LOGGER.info("Planttech2 guidebook is enabled, keeping loot: " + itemStack.toString() + " from loot.");
+                            }
                         }
                         else {
                             if (debugEnabled) {
-                                SeedDropControl.LOGGER.info("Planttech2 guidebook is disabled, removing " + itemStack.toString() + " from loot.");
+                                SeedDropControl.LOGGER.info("Planttech2 guidebook is disabled, removing loot: " + itemStack.toString() + " from loot.");
                             }
                         }
                     }
@@ -70,14 +73,14 @@ public class SeedDropLootModifier extends LootModifier {
                         }
                         else {
                             if (debugEnabled) {
-                                SeedDropControl.LOGGER.info("randomValue was < than " + chance + "/100, removing " + itemStack.toString() + " from loot.");
+                                SeedDropControl.LOGGER.info("randomValue was < than " + chance + "/100, removing loot: " + itemStack.toString() + " from loot.");
                             }
                         }
                     }
                 }
             }
             if (debugEnabled) {
-                SeedDropControl.LOGGER.info("Final Loot List Is" + finalLootList.toString());
+                SeedDropControl.LOGGER.info("Final Loot List Is: " + finalLootList.toString());
             }
             return finalLootList;
         }
