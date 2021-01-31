@@ -1,15 +1,13 @@
 package technium.seeddropcontrol;
 
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ExtensionPoint;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.fml.loading.FMLPaths;
 import net.minecraftforge.fml.network.FMLNetworkConstants;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -27,8 +25,9 @@ public class SeedDropControl {
 
     public SeedDropControl() {
         GLM.register(FMLJavaModLoadingContext.get().getModEventBus());
-        DistExecutor.safeRunForDist(() -> SideProxy.Client::new, () -> SideProxy.Server::new);
         ModLoadingContext.get().registerExtensionPoint(ExtensionPoint.DISPLAYTEST, () -> Pair.of(() -> FMLNetworkConstants.IGNORESERVERONLY, (a, b) -> true));
+        ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, Config.CONFIG, "seeddropcontrol.toml");
+        Config.loadConfig(Config.CONFIG, FMLPaths.CONFIGDIR.get().resolve("seeddropcontrol.toml").toString());
     }
 
     private static final DeferredRegister<GlobalLootModifierSerializer<?>> GLM = DeferredRegister.create(ForgeRegistries.LOOT_MODIFIER_SERIALIZERS, MOD_ID);
@@ -36,10 +35,5 @@ public class SeedDropControl {
     private static final RegistryObject<SeedDropLootModifier.Serializer> TALLGRASSMODIFIER = GLM.register("global_tall_grass_modifier", SeedDropLootModifier.Serializer::new);
     private static final RegistryObject<SeedDropLootModifier.Serializer> FERNMODIFIER = GLM.register("global_fern_modifier", SeedDropLootModifier.Serializer::new);
     private static final RegistryObject<SeedDropLootModifier.Serializer> LARGEFERNMODIFIER = GLM.register("global_large_fern_modifier", SeedDropLootModifier.Serializer::new);
-
-    @Nonnull
-    public static ResourceLocation getId(String path) {
-        return new ResourceLocation(MOD_ID, path);
-    }
 
 }
