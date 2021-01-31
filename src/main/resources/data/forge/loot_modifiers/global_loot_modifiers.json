@@ -1,9 +1,6 @@
 {
   "replace": false,
   "entries": [
-    "seeddropcontrol:global_grass_modifier",
-    "seeddropcontrol:global_tall_grass_modifier",
-    "seeddropcontrol:global_fern_grass_modifier",
-    "seeddropcontrol:global_large_fern_modifier"
+    "seeddropcontrol:global_grass_and_fern_modifier"
   ]
 }

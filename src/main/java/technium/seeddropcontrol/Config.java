@@ -32,12 +32,6 @@ public class Config {
         CONFIG = BUILDER.build();
     }
 
-    public static void loadConfig(ForgeConfigSpec config, String path) {
-        CommentedFileConfig file = CommentedFileConfig.builder(path).sync().autosave().writingMode(WritingMode.REPLACE).build();
-        file.load();
-        config.setConfig(file);
-    }
-
     public static void vanilla(ForgeConfigSpec.Builder config) {
         grass_wheat_chance = config.comment("Increase or Decrease chance of drops of wheat seeds from grass, 100 is default, <100 is the x% of default (1 is 1% of default rate)").defineInRange("Drop Rate Change", 100, 1, 100);
     }
