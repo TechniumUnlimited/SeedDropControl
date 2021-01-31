@@ -14,7 +14,7 @@ apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
 version = '1.16.2-5-1.2.6'
-group = 'technium.seeddropcontrol' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+group = 'technium.seeddropcontrol'
 archivesBaseName = 'seeddropcontrol'
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
@@ -44,7 +44,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             mods {
-                examplemod {
+                seeddropcontrol {
                     source sourceSets.main
                 }
             }
@@ -60,7 +60,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             mods {
-                examplemod {
+                seeddropcontrol {
                     source sourceSets.main
                 }
             }
@@ -79,7 +79,7 @@ minecraft {
             args '--mod', 'examplemod', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 
             mods {
-                examplemod {
+                seeddropcontrol {
                     source sourceSets.main
                 }
             }
