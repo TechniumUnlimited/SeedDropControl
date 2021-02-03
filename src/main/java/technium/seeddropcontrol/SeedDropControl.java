@@ -30,4 +30,5 @@ public class SeedDropControl {
 
     private static final DeferredRegister<GlobalLootModifierSerializer<?>> GLM = DeferredRegister.create(ForgeRegistries.LOOT_MODIFIER_SERIALIZERS, MOD_ID);
     private static final RegistryObject<SeedDropLootModifier.Serializer> GLOBALGRASSANDFERNMODIFIER = GLM.register("global_grass_and_fern_modifier", SeedDropLootModifier.Serializer::new);
+    private static final RegistryObject<DeadBushLootModifier.Serializer> GLOBALDEADBUSHMODIFIER = GLM.register("global_dead_bush_modifier", DeadBushLootModifier.Serializer::new);
 }
