@@ -1,6 +1,7 @@
 {
   "replace": false,
   "entries": [
-    "seeddropcontrol:global_grass_and_fern_modifier"
+    "seeddropcontrol:global_grass_and_fern_modifier",
+    "seeddropcontrol:global_dead_bush_modifier"
   ]
 }
