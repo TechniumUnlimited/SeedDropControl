@@ -1,7 +1,5 @@
 package technium.seeddropcontrol;
 
-import com.electronwill.nightconfig.core.file.CommentedFileConfig;
-import com.electronwill.nightconfig.core.io.WritingMode;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.fml.common.Mod;
 
@@ -41,7 +39,7 @@ public class Config {
         grass_wheat_chance = config.comment("Decrease chance of drops of wheat seeds from grass, 100 is vanilla default drop rate, <100 is the x% of default (1 is 1% of default rate)").defineInRange("Drop Rate Change", 100, 1, 100);
     }
     public static void vanillaDeadBush(ForgeConfigSpec.Builder config) {
-        dead_bush_chance = config.comment("CURRENTLY UNUSED: Decrease chance of drops from all dead bush blocks, 100 is vanilla default drop rate, <100 is the x% of default (1 is 1% of default rate)").defineInRange("Drop Rate Change", 100, 1, 100);
+        dead_bush_chance = config.comment("Decrease chance of drops from all dead bush blocks, 100 is vanilla default drop rate, <100 is the x% of default (1 is 1% of default rate)").defineInRange("Drop Rate Change", 100, 1, 100);
     }
     public static void modcompat(ForgeConfigSpec.Builder config) {
         grass_mod_seed_chance = config.comment("Decrease chance of drops of modded seeds from grass, 100 is vanilla default drop rate, <100 is the x% of default (1 is 1% of default rate)").defineInRange("Drop Rate Change", 100, 1, 100);
