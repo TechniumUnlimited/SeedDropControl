@@ -21,24 +21,20 @@ public class DeadBushLootModifier extends LootModifier {
     @Override
     public List<ItemStack> doApply(List<ItemStack> generatedLoot, LootContext context) {
         Boolean debugEnabled = Config.debug_enabled.get();
-        if (!generatedLoot.isEmpty()) {
+        if (!generatedLoot.isEmpty() && Config.dead_bush_chance.get() < 100) {
             List<ItemStack> finalLootList = new ArrayList<>();
             for (ItemStack itemStack : generatedLoot) {
-                if (Config.dead_bush_chance.get() >= 100)
+                double randomValue = Math.random();
+                double chance = Config.dead_bush_chance.get();
+                if (randomValue < chance / 100) {
+                    if (debugEnabled) {
+                        SeedDropControl.LOGGER.info("randomValue " + randomValue + "  was < than " + chance + "/100, generating loot");
+                        SeedDropControl.LOGGER.info("Added loot: " + itemStack.toString());
+                    }
                     finalLootList.add(itemStack);
-                else {
-                    double randomValue = Math.random();
-                    double chance = Config.dead_bush_chance.get();
-                    if (randomValue < chance / 100) {
-                        if (debugEnabled) {
-                            SeedDropControl.LOGGER.info("randomValue " + randomValue + "  was < than " + chance + "/100, generating loot");
-                            SeedDropControl.LOGGER.info("Added loot: " + itemStack.toString());
-                        }
-                        finalLootList.add(itemStack);
-                    } else {
-                        if (debugEnabled) {
-                            SeedDropControl.LOGGER.info("randomValue " + randomValue + " was > than " + chance + "/100, removing loot: " + itemStack.toString() + " from loot.");
-                        }
+                } else {
+                    if (debugEnabled) {
+                        SeedDropControl.LOGGER.info("randomValue " + randomValue + " was > than " + chance + "/100, removing loot: " + itemStack.toString() + " from loot.");
                     }
                 }
             }
